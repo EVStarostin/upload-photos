@@ -15,8 +15,6 @@ function fetchImages() {
 }
 
 function renderImages(images) {
-    console.log(images);
-
     const containerNode = document.querySelector('.images__list');
 
     images.forEach(image => {
