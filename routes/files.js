@@ -22,7 +22,7 @@ const upload = multer({ storage: storage })
 // Получить список фотографий
 router.get('/', function (req, res, next) {
     // Читаем БД
-    const bdRaw = fs.readFileSync("bd.json", "utf8");
+    const bdRaw = fs.readFileSync("bd.json", "utf8") || '[]';
 
     // Отправляем БД на клиент
     res.send(bdRaw);
@@ -31,8 +31,8 @@ router.get('/', function (req, res, next) {
 // Добавить фотографию в БД
 router.post('/', upload.single('photo'), function (req, res, next) {
     // Читаем БД
-    const bdRaw = fs.readFileSync("bd.json", "utf8");
-    const bd = bdRaw ? JSON.parse(bdRaw) : [];
+    const bdRaw = fs.readFileSync("bd.json", "utf8") || '[]';
+    const bd = JSON.parse(bdRaw);
 
     const newField = {
         id: bd.length,
