@@ -23,16 +23,26 @@ function renderImages(images) {
         const itemNode = document.createElement('div');
         itemNode.className = 'images__item';
 
+        const imageContainerNode = document.createElement('div');
+        imageContainerNode.className = 'image';
+
+        const imageWrapperNode = document.createElement('div');
+        imageWrapperNode.className = 'image__wrapper';
+
         const imageNode = document.createElement('img');
-        imageNode.className = 'images__img';
+        imageNode.className = 'image__img';
         imageNode.src = 'images/' + image.filename;
 
         const tagsNode = document.createElement('div');
         tagsNode.className = 'images__tags';
         tagsNode.innerText = image.tags.join('; ');
 
-        itemNode.append(imageNode);
+        imageWrapperNode.append(imageNode);
+        imageContainerNode.append(imageWrapperNode);
+
+        itemNode.append(imageContainerNode);
         itemNode.append(tagsNode);
+
         containerNode.append(itemNode);
     });
 }
