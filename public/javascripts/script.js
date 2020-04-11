@@ -18,12 +18,12 @@ function renderImages(images) {
     images.forEach(image => {
         const template = document.getElementById('list-item');
         const templateContent = template.content;
-        const img = templateContent.querySelector('.image-list__image');
-        const tag = templateContent.querySelector('.image-list__tags');
-        
-        img.src = 'images/' + image.filename;
-        img.alt = image.tags.join(', ');
-        tag.innerText = image.tags.join(', ');
+        const imageNode = templateContent.querySelector('.image-list__image');
+        const tagsNode = templateContent.querySelector('.image-list__tags');
+
+        imageNode.src = 'images/' + image.filename;
+        imageNode.alt = image.tags.join(', ');
+        tagsNode.innerText = image.tags.join(', ');
 
         containerNode.appendChild(templateContent.cloneNode(true));
     });
