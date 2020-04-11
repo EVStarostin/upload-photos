@@ -16,7 +16,7 @@ function renderImages(images) {
     const containerNode = document.querySelector('.image-list');
 
     images.forEach(image => {
-        const template = document.getElementById('list-item');
+        const template = document.querySelector('#list-item');
         const templateContent = template.content;
         const imageNode = templateContent.querySelector('.image-list__image');
         const tagsNode = templateContent.querySelector('.image-list__tags');
@@ -38,7 +38,7 @@ function subscribe() {
 function handleSubmit(e) {
     e.preventDefault();
 
-    const inputNode = document.querySelector('#file');
+    const inputNode = document.querySelector('.upload__input');
     const formData = new FormData();
     const options = { method: 'POST', body: formData };
 
