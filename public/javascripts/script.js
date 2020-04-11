@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    fetchImages();
-    subscribeForm();
+    getImages();
+    subscribe();
 }
 
-function fetchImages() {
-    const url = location.origin + '/files';
-
-    fetch(url)
+function getImages() {
+    fetch(location.origin + '/files')
         .then(res => res.json())
         .then(renderImages)
         .catch(console.error)
@@ -33,7 +31,7 @@ function renderImages(images) {
 
         const tagsNode = document.createElement('div');
         tagsNode.className = 'images__tags';
-        tagsNode.innerText = image.tags.join('; ');
+        tagsNode.innerText = image.tags.join(', ');
 
         imageWrapperNode.append(imageNode);
         imageContainerNode.append(imageWrapperNode);
@@ -45,7 +43,7 @@ function renderImages(images) {
     });
 }
 
-function subscribeForm() {
+function subscribe() {
     const formNode = document.querySelector('.upload');
 
     formNode.addEventListener('submit', handleSubmit);
@@ -59,6 +57,7 @@ function handleSubmit(e) {
     const options = { method: 'POST', body: formData };
 
     formData.append(inputNode.name, inputNode.files[0]);
+
     fetch(e.target.action, options)
         .then(res => res.json())
         .then(image => renderImages([image]))
