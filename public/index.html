@@ -1,0 +1,26 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/script.js"></script>
+</head>
+
+<body>
+  <h1 class="page-heading">Распознавание изображений</h1>
+
+  <form class="upload" enctype="multipart/form-data" method="post" action="files">
+    <h2 class="upload__heading">Загрузить изображение</h2>
+    <p>
+      <input class="upload__input" type="file" id="file" name="photo" accept="image/*,image/jpeg">
+      <input class="upload__submit" type="submit" value="Отправить">
+    </p>
+  </form> 
+
+  <div class="images">
+    <h2 class="images__heading">Список изображений</h2>
+    <div class="images__list"></div>
+  </div>
+</body>
+
+</html>
