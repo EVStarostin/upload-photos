@@ -13,33 +13,19 @@ function getImages() {
 }
 
 function renderImages(images) {
-    const containerNode = document.querySelector('.images__list');
+    const containerNode = document.querySelector('.image-list');
 
     images.forEach(image => {
-        const itemNode = document.createElement('div');
-        itemNode.className = 'images__item';
+        const template = document.getElementById('list-item');
+        const templateContent = template.content;
+        const img = templateContent.querySelector('.image-list__image');
+        const tag = templateContent.querySelector('.image-list__tags');
+        
+        img.src = 'images/' + image.filename;
+        img.alt = image.tags.join(', ');
+        tag.innerText = image.tags.join(', ');
 
-        const imageContainerNode = document.createElement('div');
-        imageContainerNode.className = 'image';
-
-        const imageWrapperNode = document.createElement('div');
-        imageWrapperNode.className = 'image__wrapper';
-
-        const imageNode = document.createElement('img');
-        imageNode.className = 'image__img';
-        imageNode.src = 'images/' + image.filename;
-
-        const tagsNode = document.createElement('div');
-        tagsNode.className = 'images__tags';
-        tagsNode.innerText = image.tags.join(', ');
-
-        imageWrapperNode.append(imageNode);
-        imageContainerNode.append(imageWrapperNode);
-
-        itemNode.append(imageContainerNode);
-        itemNode.append(tagsNode);
-
-        containerNode.append(itemNode);
+        containerNode.appendChild(templateContent.cloneNode(true));
     });
 }
 

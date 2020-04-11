@@ -13,12 +13,12 @@ body {
   padding: 10px 20px;
 }
 
-.images__list {
+.image-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.images__item {
+.image-list__item {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -29,12 +29,12 @@ body {
   background: #ddd;
 }
 
-.image {
+.image-list__image-container {
   position: relative;
   padding-bottom: 50%;
 }
 
-.image__wrapper {
+.image-list__image-wrapper {
   position: absolute;
   top: 0;
   right: 0;
@@ -45,17 +45,17 @@ body {
   align-items: center;
 }
 
-.image__img {
+.image-list__image {
   max-width: 100%;
   max-height: 100%;
 }
 
-.images__tags {
+.image-list__tags {
   margin-top: 10px;
   text-align: center;
 }
 
-.images__tags::before {
+.image-list__tags::before {
   content: "Тэги: ";
   font-weight: bold;
 }
